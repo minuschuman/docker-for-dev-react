@@ -1,0 +1,15 @@
+# docker
+version: "3.8"
+
+services:
+   frontend:
+     build:
+       context: ../
+       dockerfile: .docker/dev/Dockerfile
+     volumes:
+       - ../:/react-app:delegated
+       - /react-app/node_modules 
+     ports:
+       - 3009:3009
+     environment:
+       - CHOKIDAR_USEPOLLING=true
